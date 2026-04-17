@@ -17,6 +17,7 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.90.0",
     "@wordpress/block-serialization-default-parser": "^5.44.0",
     "ajv": "^8.18.0",
     "ajv-formats": "^3.0.1",
