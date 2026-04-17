@@ -43,3 +43,28 @@ jobs:
 
       - name: Build
         run: npm run build
+
+  smoke:
+    name: smoke (Playground)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # Smoke runs only on PRs to main (not on every push) to save CI minutes.
+    # Boots real WordPress via @wp-playground/cli, installs the fixture
+    # theme, fetches the homepage, and asserts no PHP fatal.
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Smoke test (real WordPress via Playground)
+        run: npm run test:smoke
