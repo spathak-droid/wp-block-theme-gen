@@ -216,6 +216,34 @@ On any failure: re-prompt with exact error. Cap 2 retries. Then escalate model. 
 - **E2E** via Playwright for happy path + error states.
 - **Blocks merge:** any unit test fail; zero-`wp:html` rate <100% on integration; validity rate <90% on last 10 runs.
 
+## Session Summaries (MANDATORY)
+
+At the end of **every** working session, write a summary file to `.summary/` (gitignored, local-only).
+
+- **Path:** `.summary/YYYY-MM-DD-session-N.md` (increment N if multiple sessions per day).
+- **When:** Before handing control back to the user at the end of a session, or when the user says "done for now", "wrapping up", or similar.
+- **Format:**
+  ```markdown
+  # Session Summary — YYYY-MM-DD (session N)
+
+  ## What we did
+  - Bullet: concrete actions taken
+
+  ## What we fixed
+  - Bullet: problems solved + root cause
+
+  ## What we decided
+  - Bullet: choices locked in this session + why
+
+  ## What's next
+  - Bullet: immediate next step for the next session
+
+  ## Gotchas / notes
+  - Bullet: non-obvious things future-us should remember
+  ```
+- Keep it terse. This is a notebook, not a report. 5–15 bullets total.
+- Never commit `.summary/` to git — it's personal working memory.
+
 ## Commit & PR Discipline
 
 - **Conventional commits:** `feat:`, `fix:`, `docs:`, `test:`, `refactor:`, `chore:`. Include scope: `feat(ir): add void block handling`.

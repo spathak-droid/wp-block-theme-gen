@@ -47,5 +47,8 @@ next-env.d.ts
 # Claude Code harness (local skills/hooks/settings)
 .claude/
 
+# Local session summaries (personal notes, not shipped)
+.summary/
+
 # OS
 Thumbs.db
